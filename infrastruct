@@ -1,0 +1,34 @@
+Main structure
+  1. cmake_minimum_required (VERSION 2.8.11): Anounce the required cmake version
+  
+  2. project (HELLO): Anounce the project name
+  
+  3. add_subdirectory (Hello): Anounce the sub-directory, which ought to contain its own CMakeList.txt
+  
+  4. add_library(<name> [STATIC | SHARED | MODULE]  (https://cmake.org/cmake/help/latest/command/add_library.html)
+            [EXCLUDE_FROM_ALL]
+            [<source>...])
+      : Adds a library target called <name> to be built from the source files listed in the command invocation. 
+        The <name> corresponds to the logical target name and must be globally unique within a project. 
+        The actual file name of the library built is constructed based on conventions of the native platform (such as lib<name>.a or <name>.lib).
+  
+  5. target_include_directories(<target> [SYSTEM] [AFTER|BEFORE]  (https://cmake.org/cmake/help/latest/command/target_include_directories.html?highlight=target_include_directories)
+          <INTERFACE|PUBLIC|PRIVATE> [items1...]
+          [<INTERFACE|PUBLIC|PRIVATE> [items2...] ...])
+      : Specifies include directories to use when compiling a given target. 
+        The named <target> must have been created by a command such as add_executable() or add_library() and must not be an ALIAS target.
+        
+  6. add_executable(<name> [WIN32] [MACOSX_BUNDLE] (https://cmake.org/cmake/help/latest/command/add_executable.html?highlight=add_executable)
+               [EXCLUDE_FROM_ALL]
+               [source1] [source2 ...])
+      : Adds an executable target called <name> to be built from the source files listed in the command invocation. 
+        The <name> corresponds to the logical target name and must be globally unique within a project. 
+        The actual file name of the executable built is constructed based on conventions of the native platform (such as <name>.exe or just <name>).
+        
+  7. target_link_libraries(<target> ... <item>... ...)
+      : Specify libraries or flags to use when linking a given target and/or its dependents. 
+        Usage requirements from linked library targets will be propagated. 
+        Usage requirements of a target's dependencies affect compilation of its own sources.
+        The named <target> must have been created by a command such as add_executable() or add_library() and must not be an ALIAS target. 
+        If policy CMP0079 is not set to NEW then the target must have been created in the current directory. 
+        Repeated calls for the same <target> append items in the order called.
