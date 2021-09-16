@@ -1,0 +1,2 @@
+1. 查看gcc真实包含的库路劲：
+    cpp -xc++ -v < /dev/null
